@@ -1,0 +1,54 @@
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+
+}
+
+/*
+default font-size is 16px of the browser, we want 10px , 10 / 16 , % allows the user to change the font size of the browser
+1rem = 10px, 10px / 16px = 62.5%
+ */
+html {
+  //defines what 1rem is
+  font-size: 62.5%;
+
+  //@include respond(phone){
+  //  font-size: 50%;
+  //} - not needed , because the tab port will apply
+
+//always the larger one before the smaller one
+
+  @include respond(tab-land){ // width < 1200
+    font-size: 56.25%; //1rem = 9px, 9/ 16 = 56.25%
+  }
+
+  @include respond(tab-port){ // width < 900px
+    font-size: 60%; //1rem = 8px, 8/ 16 = 50%
+  }
+  @include respond(big-desktop){
+    font-size: 75%; //1rem = 12, 12 / 16
+  }
+
+}
+
+
+body {
+  box-sizing: border-box;
+  padding: 3rem;
+
+  @include respond(tab-port){
+    padding: 0;
+  }
+}
+
+
+::selection{
+  background-color: $color-primary;
+  color: $color-white;
+
+}
+
